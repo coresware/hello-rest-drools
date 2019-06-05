@@ -1,0 +1,6 @@
+{"viajeNocturno" : false, "distanciaEnKm":9} --> 70
+{"viajeNocturno" : true, "distanciaEnKm":5} --> 100
+{"viajeNocturno" : false, "distanciaEnKm":50} --> 170
+{"viajeNocturno" : true, "distanciaEnKm":50} --> 250 
+{"viajeNocturno" : false, "distanciaEnKm":100} --> 220
+{"viajeNocturno" : true, "distanciaEnKm":100} --> 350 

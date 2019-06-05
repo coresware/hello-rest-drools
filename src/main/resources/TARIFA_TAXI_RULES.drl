@@ -1,0 +1,57 @@
+import com.example.drools.rules.model.Tarifa;
+import com.example.drools.rules.model.Viaje;
+import java.util.*;
+
+global com.example.drools.rules.model.Tarifa tarifa;
+dialect  "mvel"
+
+rule "Calcular Tarifa Taxi - Escenario 1"
+    when
+        instanciaViaje:Viaje(viajeNocturno == false && distanciaEnKm < 10);
+    then
+       	tarifa.setRecargoNocturno(0);
+       	tarifa.setTarifaViaje(70);
+end
+
+rule "Calcular Tarifa Taxi - Escenario 2"
+    when
+        instanciaViaje:Viaje(viajeNocturno == true && distanciaEnKm < 10);
+    then
+       	tarifa.setRecargoNocturno(30);
+       	tarifa.setTarifaViaje(70);
+end
+
+
+rule "Calcular Tarifa Taxi - Escenario 3"
+    when
+        instanciaViaje:Viaje(viajeNocturno == false && distanciaEnKm >= 10 && distanciaEnKm < 100);
+    then
+       	tarifa.setRecargoNocturno(0);
+       	tarifa.setTarifaViaje(70+(2*instanciaViaje.getDistanciaEnKm()));
+end
+
+
+rule "Calcular Tarifa Taxi - Escenario 4"
+    when
+        instanciaViaje:Viaje(viajeNocturno == true && distanciaEnKm >= 10 && distanciaEnKm < 100);
+    then
+       	tarifa.setRecargoNocturno(30+instanciaViaje.getDistanciaEnKm());
+       	tarifa.setTarifaViaje(70+(2*instanciaViaje.getDistanciaEnKm()));
+end
+
+
+rule "Calcular Tarifa Taxi - Escenario 5"
+    when
+        instanciaViaje:Viaje(viajeNocturno == false && distanciaEnKm >= 100);
+    then
+       	tarifa.setRecargoNocturno(0);
+       	tarifa.setTarifaViaje(70+(1.5*instanciaViaje.getDistanciaEnKm()));
+end
+
+rule "Calcular Tarifa Taxi - Escenario 6"
+    when
+        instanciaViaje:Viaje(viajeNocturno == true && distanciaEnKm >= 100);
+    then
+       	tarifa.setRecargoNocturno(30+instanciaViaje.getDistanciaEnKm());
+       	tarifa.setTarifaViaje(70+(1.5*instanciaViaje.getDistanciaEnKm()));
+end

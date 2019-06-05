@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "2da15ae0-812f-4700-8b5f-17ce703bb77d",
+		"name": "spring-boot-drools",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/tarifa/calcular",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json;charset=UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"viajeNocturno\" : false, \"distanciaEnKm\":100}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/tarifa/calcular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarifa",
+						"calcular"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
